@@ -10,12 +10,9 @@ class MathGame
 
   def play_game
     while @player1.life > 0 && @player2.life > 0 do
-      puts "#{@game.current_player.name}: #{@game.random_question}"
+      puts "#{@game.current_player.name}: #{@game.generate_random_question}"
       @game.check_answer?(gets.chomp)
     end 
   end
   
 end
-
-start_game = MathGame.new
-start_game.play_game

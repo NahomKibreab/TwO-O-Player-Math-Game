@@ -6,21 +6,17 @@ class Game
     @number2 = 0
     @p1 = p1
     @p2 = p2
-    @current_player = nil
+    @current_player = @p1
   end
 
-  def random_question
+  def generate_random_question
     @number1 = random_number
     @number2 = random_number
     "What does #{@number1} plus #{@number2} equal?"
   end
 
-  def current_player
-    if(@current_player == nil)
-      @current_player = @p1
-    else
+  def switching_player
       @current_player = @current_player == @p1 ? @p2 : @p1
-    end
   end
 
   def check_answer?(answer)
@@ -35,6 +31,7 @@ class Game
     else
       puts "Seriously? No!"
       @current_player.lost_life
+      switching_player
     end
     puts "P1: #{@p1.life}/3 vs P2: #{@p2.life}/3"
     game_round
