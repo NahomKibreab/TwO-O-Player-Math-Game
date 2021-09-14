@@ -10,8 +10,8 @@ class Game
   end
 
   def random_question
-    @number1 = self.random_number
-    @number2 = self.random_number
+    @number1 = random_number
+    @number2 = random_number
     "What does #{@number1} plus #{@number2} equal?"
   end
 
@@ -27,6 +27,8 @@ class Game
     result(answer.to_i == (@number1 + @number2))
   end
   
+  private
+
   def result(answer)
     if(answer)
       puts "YES! You are correct."
@@ -37,9 +39,6 @@ class Game
     puts "P1: #{@p1.life}/3 vs P2: #{@p2.life}/3"
     game_round
   end
-  
-  
-  protected
 
   def winner
     @p1.life != 0 ? @p1 : @p2
